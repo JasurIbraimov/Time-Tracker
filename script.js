@@ -1,7 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
 	// CONSTANTS
-	localStorage.setItem('lang', 'ru')
-	let lang = localStorage.getItem('lang')
+	let lang = 'ru'
 	let TIMER_STATUS
 	const MESSAGES = {
 		years: {
@@ -89,13 +88,16 @@ window.addEventListener('DOMContentLoaded', () => {
 		languageChanger = document.querySelector('.language__changer'),
 		languageOptions = document.querySelector('.language__variants'),
 		languageVariants = languageOptions.querySelectorAll('ul li'),
-		headerTitle = document.querySelector('header h1')
+		headerTitle = document.querySelector('header h1'),
+		tip = document.getElementById('tip'),
+		layer = document.querySelector('.layer')
 
 	// HELPER FUNCTIONS
 	const addingZero = (number) => (number < 10 ? '0' + number : number)
 	const setTextsToElems = (messageObject, statusCode, lang, additionalObj = {}) => {
 		if (lang === 'en') {
 			headerTitle.innerHTML = 'Time Tracker'
+			tip.innerHTML = 'Choose one of the options!'
 			if (statusCode === STATUS_CODE.success) {
 				years.nextElementSibling.innerHTML = messageObject.years.success.en
 				months.nextElementSibling.innerHTML = messageObject.months.success.en
@@ -127,6 +129,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			}
 		} else if (lang === 'ru') {
 			headerTitle.innerHTML = 'Tрекер Времени'
+			tip.innerHTML = 'Выберите один из вариантов!'
 			if (statusCode === STATUS_CODE.success) {
 				years.nextElementSibling.innerHTML = messageObject.years.success.ru
 				months.nextElementSibling.innerHTML = messageObject.months.success.ru
@@ -282,9 +285,9 @@ window.addEventListener('DOMContentLoaded', () => {
 		if (!inputDate.value && !inputTime.value) {
 			timerF.stop()
 			setTextsToElems(MESSAGES, STATUS_CODE.reset, lang)
-			document.getElementById('tip').classList.add('fadeIn')
+			tip.classList.add('fadeIn')
 			setTimeout(() => {
-				document.getElementById('tip').classList.remove('fadeIn')
+				tip.classList.remove('fadeIn')
 			}, 2000)
 		}
 	})
@@ -318,10 +321,14 @@ window.addEventListener('DOMContentLoaded', () => {
 			setTextsToElems(MESSAGES, TIMER_STATUS, lang)
 		})
 	})
-
+	layer.addEventListener('click', () => {
+		languageOptions.classList.remove('language__variants_visible')
+	})
 	window.addEventListener('load', () => {
 		inputDate.value = localStorage.getItem('date')
 		inputTime.value = localStorage.getItem('time')
+		lang = localStorage.getItem('lang')
+		setTextsToElems(MESSAGES, STATUS_CODE.reset, lang)
 		checkInputsValue(inputDate.value, inputTime.value)
 	})
 })

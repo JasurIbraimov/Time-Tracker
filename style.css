@@ -242,8 +242,8 @@ ul li {
 .language .language__variants {
 	background: var(--text-color);
 	position: absolute;
+	display: none;
 	top: 40px;
-	opacity: 0;
 	left: 50%;
 	transform: translateX(-50%);
 	color: #000000;
@@ -252,7 +252,7 @@ ul li {
 	box-shadow: var(--main-box-shadow);
 }
 .language .language__variants.language__variants_visible {
-	opacity: 1;
+	display: block;
 }
 .language .language__variants ul li {
 	cursor: pointer;
