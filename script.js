@@ -1,11 +1,7 @@
 window.addEventListener('DOMContentLoaded', () => {
 	// CONSTANTS
-	let lang
-	if (localStorage.getItem('lang')) {
-		lang = localStorage.getItem('lang')
-	} else {
-		lang = 'ru'
-	}
+	localStorage.setItem('lang', 'ru')
+	let lang = localStorage.getItem('lang')
 	let TIMER_STATUS
 	const MESSAGES = {
 		years: {
