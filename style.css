@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;0,700;0,900;1,400&display=swap');
+/* -------------------- VARIABLES ----------------- */
+:root {
+	--text-color: #ffffff;
+	--main-box-shadow: 3px 3px 5px #00000050;
+	--primary-color: #00b894;
+	--secondary-color: #ff7675;
+	--secondary-color-alt: #f83e3e;
+	--support-color: #00cec9;
+	--timer-unit-bg: #ffffff;
+	--bg-color: #dfe6e9;
+
+	/* FONT SIZE */
+	--coutdown-font-size: 5rem;
+	--text-font-size: 1rem;
+	--buttons-font-size: 0.8rem;
+
+	/* METRICS */
+	--layer-width: 1200px;
+	--timer-count-height: 220px;
+	--timer-unit-width: 15%;
+	--timer-descr-height: 60px;
+	--form-height: 50px;
+}
+
+/* ---------------- BASE ---------------- */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+	box-sizing: border-box;
+}
+body {
+	background: var(--bg-color);
+}
+i {
+	font-size: 1.5rem;
+}
+/* ---------------- MAIN SECTION ---------------- */
+
+.layer {
+	max-width: var(--layer-width);
+	height: 100vh;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	flex-direction: column;
+}
+
+/*   ----------------  TIMER  ----------------  */
+.timer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	width: 100%;
+	margin-top: 10px;
+	transition: 0.5s;
+}
+.timer.timer_hidden {
+	height: 0;
+	opacity: 0;
+}
+.timer.timer_disable .timer__unit .timer__count {
+	height: 0;
+	opacity: 0;
+}
+.timer.timer_disable .timer__unit .timer__descr {
+	background: var(--primary-color);
+}
+.timer.timer_disable .timer__unit {
+	margin-bottom: 60px;
+}
+.timer .timer__unit {
+	width: var(--timer-unit-width);
+	margin: 10px;
+	transition: 0.5s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	box-shadow: var(--main-box-shadow);
+}
+.timer .timer__unit .timer__count {
+	width: 100%;
+	height: var(--timer-count-height);
+	display: flex;
+	justify-content: center;
+	color: #000000;
+	align-items: center;
+	flex-direction: column;
+	transition: height 0.7s;
+	background-color: var(--timer-unit-bg);
+	user-select: none;
+	font-size: var(--coutdown-font-size);
+	font-weight: 400;
+}
+
+.timer .timer__unit .timer__descr {
+	font-size: var(--text-font-size);
+	text-transform: uppercase;
+	font-weight: 400;
+	color: var(--text-color);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: var(--timer-descr-height);
+	transition: 0.5s;
+	text-align: center;
+	background: var(--secondary-color);
+}
+
+/* ----------------- FORM ----------------- */
+.form {
+	width: 100%;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	height: var(--form-height);
+}
+.form .form__field {
+	width: 25%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 10px;
+}
+.form .form__field:nth-child(1) {
+	width: 40%;
+}
+.form input {
+	width: 100%;
+	height: 100%;
+	border: none;
+	padding: 0px 20px;
+	box-shadow: var(--main-box-shadow);
+	font-size: var(--text-font-size);
+}
+.form .form__buttons {
+	width: 10%;
+	height: 100%;
+	display: flex;
+}
+.form .form__buttons button {
+	width: 100%;
+	box-shadow: var(--main-box-shadow);
+	height: 100%;
+	border: none;
+	background: var(--primary-color);
+	font-size: var(--buttons-font-size);
+	text-transform: uppercase;
+	cursor: pointer;
+	color: var(--text-color);
+}
+.form .form__reset-btn {
+	width: 10%;
+	background: var(--secondary-color);
+	margin-left: 10px;
+}
+.form .form__reset {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	padding: 5px;
+	background: var(--secondary-color);
+	color: var(--text-color);
+	transition: 0.5s;
+	cursor: pointer;
+	box-shadow: var(--main-box-shadow);
+}
+.form .form__reset:hover {
+	background: var(--secondary-color-alt);
+}
+/* ---------------- TIP ----------------- */
+.tip.fadeIn {
+	opacity: 1;
+}
+.tip {
+	position: absolute;
+	border-radius: 10px;
+	padding: 20px;
+	font-size: var(--text-font-size);
+	opacity: 0;
+	background: var(--support-color);
+	color: var(--text-color);
+	transition: 0.5s;
+	left: 27%;
+	transform: translate(-50%, 100%);
+	text-align: center;
+	box-shadow: var(--main-box-shadow);
+}
+
+.tip::before {
+	content: '';
+	position: absolute;
+	border: 20px solid transparent;
+	border-bottom: 20px solid var(--support-color);
+	top: -30px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+}
+
+/* HEADER */
+.header {
+	position: fixed;
+	width: 100%;
+	font-size: var(--text-font-size);
+	height: var(--timer-descr-height);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--text-color);
+	box-shadow: var(--main-box-shadow);
+	background: var(--primary-color);
+	z-index: 1000;
+	pointer-events: none;
+}
+
+.header .header__switcher {
+	margin-left: 60px;
+	cursor: pointer;
+}
+
+/* ------------- MEDIA QUERIES --------------- */
+@media (max-width: 1024px) {
+	:root {
+		/* FONT SIZE */
+		--coutdown-font-size: 4.5rem;
+		--text-font-size: 0.8rem;
+		--buttons-font-size: 0.7rem;
+
+		/* METRICS */
+		--timer-height: 300px;
+		--timer-count-height: 180px;
+		--timer-descr-height: 60px;
+	}
+}
+@media (max-width: 840px) {
+	:root {
+		/* FONT SIZE */
+		--coutdown-font-size: 3.5rem;
+
+		/* METRICS */
+		--timer-count-height: 160px;
+		--timer-descr-height: 50px;
+	}
+}
+@media (max-width: 720px) {
+	:root {
+		/* METRICS */
+		--timer-count-height: 130px;
+		--timer-descr-height: 40px;
+		--form-height: 40px;
+	}
+	.timer {
+		flex-wrap: wrap;
+	}
+}
+@media (max-width: 665px) {
+	:root {
+		/* METRICS */
+		--timer-unit-width: 20%;
+		--timer-count-height: 130px;
+		--timer-descr-height: 40px;
+		--form-height: 40px;
+	}
+	.timer {
+		flex-wrap: wrap;
+	}
+	.form {
+		flex-direction: column;
+		height: 20%;
+	}
+	.form .form__field {
+		width: 90%;
+		margin: 0;
+		margin-top: 10px;
+	}
+	.form .form__field:nth-child(1) {
+		width: 90%;
+	}
+	.form .form__buttons {
+		width: 90%;
+		margin-top: 10px;
+	}
+	.form .form__buttons button {
+		width: 50%;
+	}
+}
+@media (max-width: 420px) {
+	:root {
+		/* FONT SIZE */
+		--coutdown-font-size: 2.8rem;
+		--text-font-size: 0.7rem;
+
+		/* METRICS */
+		--timer-count-height: 110px;
+	}
+}
+@media (max-width: 360px) {
+	:root {
+		/* FONT SIZE */
+		--coutdown-font-size: 2rem;
+		--text-font-size: 0.6rem;
+
+		/* METRICS */
+		--timer-count-height: 80px;
+	}
+}

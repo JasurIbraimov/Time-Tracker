@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+		<link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="./style.css" />
+		<title>CountDown Timer</title>
+	</head>
+	<body>
+		<section>
+			<header class="header">
+				<h1>Трекер Времени!</h1>
+			</header>
+			<div class="layer">
+				<form class="form" name="form">
+					<div class="form__field">
+						<div class="form__reset"><i class="bx bx-reset"></i></div>
+						<input name="date" type="date" />
+					</div>
+					<div class="form__field">
+						<div class="form__reset"><i class="bx bx-reset"></i></div>
+						<input name="time" type="time" />
+					</div>
+					<div class="form__buttons">
+						<button type="submit"><i class="bx bxs-timer"></i></button>
+						<button type="button" class="form__reset-btn"><i class="bx bxs-trash-alt"></i></button>
+					</div>
+					<div class="tip" id="tip">
+						<p>Выберите один из вариантов!</p>
+					</div>
+				</form>
+				<div class="timer timer_hidden" id="timer">
+					<div class="timer__unit">
+						<p class="timer__count" id="years">00</p>
+						<p class="timer__descr">Год</p>
+					</div>
+					<div class="timer__unit">
+						<p class="timer__count" id="months">00</p>
+						<p class="timer__descr">Месяц</p>
+					</div>
+					<div class="timer__unit">
+						<p class="timer__count" id="days">00</p>
+						<p class="timer__descr">День</p>
+					</div>
+					<div class="timer__unit">
+						<p class="timer__count" id="hours">00</p>
+						<p class="timer__descr">Час</p>
+					</div>
+					<div class="timer__unit">
+						<p class="timer__count" id="minutes">00</p>
+						<p class="timer__descr">Минута</p>
+					</div>
+					<div class="timer__unit">
+						<p class="timer__count" id="seconds">00</p>
+						<p class="timer__descr">Секунда</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script src="./script.js"></script>
+	</body>
+</html>
