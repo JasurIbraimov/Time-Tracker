@@ -12,6 +12,6 @@ Stack is very simple!
 - Javascript 
 - HTML 
 - Css
-Additional, I use a boxicon icon set! https://boxicons.com/
+- Additional, I use a boxicon icon set! https://boxicons.com/
 
 Thanks! I hope you'll enjoy this app and it'll be usefull!
