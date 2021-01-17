@@ -11,18 +11,7 @@
 	<body>
 		<section>
 			<header class="header">
-				<h1>Трекер Времени</h1>
-				<div class="language">
-					<div class="language__changer">
-						<i class="bx bxs-planet"></i>
-					</div>
-					<div class="language__variants">
-						<ul>
-							<li data-lang="ru">Русский</li>
-							<li data-lang="en">English</li>
-						</ul>
-					</div>
-				</div>
+				<h1>Timer Tracker</h1>
 			</header>
 			<div class="layer">
 				<form class="form" name="form">
@@ -35,37 +24,37 @@
 						<input name="time" type="time" />
 					</div>
 					<div class="form__buttons">
-						<button type="submit"><i class="bx bxs-timer"></i></button>
+						<button type="button" id='timerBtn'><i class="bx bxs-timer"></i></button>
 						<button type="button" class="form__reset-btn"><i class="bx bxs-trash-alt"></i></button>
 					</div>
 					<div class="tip" id="tip">
-						<p>Выберите один из вариантов!</p>
+						<p>Choose one of the options!</p>
 					</div>
 				</form>
 				<div class="timer timer_hidden" id="timer">
 					<div class="timer__unit">
 						<p class="timer__count" id="years">00</p>
-						<p class="timer__descr">Год</p>
+						<p class="timer__descr">Years</p>
 					</div>
 					<div class="timer__unit">
 						<p class="timer__count" id="months">00</p>
-						<p class="timer__descr">Месяц</p>
+						<p class="timer__descr">Months</p>
 					</div>
 					<div class="timer__unit">
 						<p class="timer__count" id="days">00</p>
-						<p class="timer__descr">День</p>
+						<p class="timer__descr">Days</p>
 					</div>
 					<div class="timer__unit">
 						<p class="timer__count" id="hours">00</p>
-						<p class="timer__descr">Час</p>
+						<p class="timer__descr">Hours</p>
 					</div>
 					<div class="timer__unit">
 						<p class="timer__count" id="minutes">00</p>
-						<p class="timer__descr">Минута</p>
+						<p class="timer__descr">Minutes</p>
 					</div>
 					<div class="timer__unit">
 						<p class="timer__count" id="seconds">00</p>
-						<p class="timer__descr">Секунда</p>
+						<p class="timer__descr">Seconds</p>
 					</div>
 				</div>
 			</div>

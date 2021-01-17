@@ -11,13 +11,13 @@
 	--bg-color: #dfe6e9;
 
 	/* FONT SIZE */
-	--coutdown-font-size: 5rem;
+	--coutdown-font-size: 6rem;
 	--text-font-size: 1rem;
 	--buttons-font-size: 0.8rem;
 
 	/* METRICS */
 	--layer-width: 1200px;
-	--timer-count-height: 220px;
+	--timer-count-height: 300px;
 	--timer-unit-width: 15%;
 	--timer-descr-height: 60px;
 	--form-height: 50px;
@@ -46,7 +46,7 @@ ul li {
 	max-width: var(--layer-width);
 	height: 100vh;
 	margin: 0px auto;
-	padding-top: 70px;
+	padding-top: 60px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -183,12 +183,14 @@ ul li {
 }
 /* ---------------- TIP ----------------- */
 .tip.fadeIn {
+	visibility: visible;
 	opacity: 1;
 }
 .tip {
 	position: absolute;
 	border-radius: 10px;
 	padding: 20px;
+	visibility: hidden;
 	font-size: var(--text-font-size);
 	opacity: 0;
 	background: var(--support-color);
@@ -225,73 +227,44 @@ ul li {
 	z-index: 2;
 }
 
-.header .header__switcher {
-	margin-left: 60px;
-	cursor: pointer;
-}
 
-/*  LANGUAGE SWITCHER */
-.language {
-	margin-left: 40px;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-}
-.language .language__variants {
-	background: var(--text-color);
-	position: absolute;
-	display: none;
-	top: 40px;
-	left: 50%;
-	transform: translateX(-50%);
-	color: #000000;
-	z-index: 2;
-	font-size: var(--text-font-size);
-	box-shadow: var(--main-box-shadow);
-}
-.language .language__variants.language__variants_visible {
-	display: block;
-}
-.language .language__variants ul li {
-	cursor: pointer;
-	padding: 10px 20px;
-	transition: background-color 0.25s;
-	font-weight: 500;
-}
-.language .language__variants ul li:hover {
-	background-color: var(--secondary-color);
-	color: var(--text-color);
-}
 /* ------------- MEDIA QUERIES --------------- */
 @media (max-width: 1024px) {
 	:root {
 		/* FONT SIZE */
-		--coutdown-font-size: 4.5rem;
-		--text-font-size: 0.8rem;
+		--coutdown-font-size: 5rem;
+		--text-font-size: 1rem;
 		--buttons-font-size: 0.7rem;
 
 		/* METRICS */
 		--timer-height: 300px;
-		--timer-count-height: 180px;
+		--timer-count-height: 250px;
 		--timer-descr-height: 60px;
+		--timer-unit-width: 150px;
+
 	}
 }
 @media (max-width: 840px) {
 	:root {
 		/* FONT SIZE */
-		--coutdown-font-size: 3.5rem;
+		--coutdown-font-size: 4.5rem;
 
 		/* METRICS */
-		--timer-count-height: 160px;
+		--timer-count-height: 200px;
 		--timer-descr-height: 50px;
+		--timer-unit-width: 150px;
+	}
+	.timer {
+		flex-wrap: wrap;
 	}
 }
 @media (max-width: 720px) {
 	:root {
+		--coutdown-font-size: 4.8rem;
 		/* METRICS */
-		--timer-count-height: 130px;
+		--timer-count-height: 180px;
+		--timer-unit-width: 150px;
+
 		--timer-descr-height: 40px;
 		--form-height: 40px;
 	}
@@ -303,12 +276,11 @@ ul li {
 	:root {
 		/* METRICS */
 		--timer-unit-width: 20%;
-		--timer-count-height: 130px;
+		--timer-count-height: 170px;
+		--timer-unit-width: 120px;
+
 		--timer-descr-height: 40px;
 		--form-height: 40px;
-	}
-	.timer {
-		flex-wrap: wrap;
 	}
 	.form {
 		flex-direction: column;
@@ -329,27 +301,35 @@ ul li {
 	.form .form__buttons button {
 		width: 50%;
 	}
+	.tip {
+		left: 50%;
+		transform: translate(-50%, 100%);
+	}
 }
 @media (max-width: 420px) {
 	:root {
 		/* FONT SIZE */
-		--coutdown-font-size: 2.8rem;
-		--text-font-size: 0.7rem;
+		--coutdown-font-size: 4.5rem;
+		--text-font-size: 1rem;
 
 		/* METRICS */
-		--timer-count-height: 110px;
+		--timer-count-height: 160px;
+		--timer-unit-width: 120px;
 	}
+
 }
 @media (max-width: 360px) {
 	:root {
 		/* FONT SIZE */
-		--coutdown-font-size: 2rem;
-		--text-font-size: 0.6rem;
+		--coutdown-font-size: 4rem;
+		--text-font-size: 1rem;
 
 		/* METRICS */
-		--timer-count-height: 80px;
+		--timer-count-height: 150px;
+		--timer-unit-width: 100px;
 	}
 	.layer {
-		padding-top: 0px;
+		padding-top: 40px;
 	}
+
 }

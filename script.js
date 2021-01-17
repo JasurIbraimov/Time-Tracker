@@ -1,72 +1,34 @@
 window.addEventListener('DOMContentLoaded', () => {
 	// CONSTANTS
-	let lang = 'ru'
-	let TIMER_STATUS
 	const MESSAGES = {
 		years: {
-			success: {
-				en: 'Year',
-				ru: 'Год'
-			},
-			error: {
-				en: 'Oops',
-				ru: 'Увы'
-			},
+			success: 'Years',
+			error: 'Oops',
 			reset: '00'
 		},
 		months: {
-			success: {
-				en: 'Month',
-				ru: 'Месяц'
-			},
-			error: {
-				en: 'This time',
-				ru: 'Это время'
-			},
+			success: 'Months',
+			error: 'This time',
 			reset: '00'
 		},
 		days: {
-			success: {
-				en: 'Days',
-				ru: 'День'
-			},
-			error: {
-				en: 'Will not return!',
-				ru: 'Не вернуть!'
-			},
+			success: 'Days',
+			error: 'Will not return!',
 			reset: '00'
 		},
 		hours: {
-			success: {
-				en: 'Hours',
-				ru: 'Час'
-			},
-			error: {
-				en: "Let's",
-				ru: 'Пора'
-			},
+			success: 'Hours',
+			error: "Let's",
 			reset: '00'
 		},
 		minutes: {
-			success: {
-				en: 'Minutes',
-				ru: 'Минута'
-			},
-			error: {
-				en: 'Move',
-				ru: 'двигаться'
-			},
+			success: 'Minutes',
+			error: "Move",
 			reset: '00'
 		},
 		seconds: {
-			success: {
-				en: 'Seconds',
-				ru: 'Секунда'
-			},
-			error: {
-				en: 'On!',
-				ru: 'вперед!'
-			},
+			success: 'Seconds',
+			error: 'On!',
 			reset: '00'
 		}
 	}
@@ -85,33 +47,25 @@ window.addEventListener('DOMContentLoaded', () => {
 		seconds = timer.querySelector('#seconds'),
 		resetBtns = document.querySelectorAll('.form__reset'),
 		resetFullTimer = document.querySelector('.form__reset-btn'),
-		languageChanger = document.querySelector('.language__changer'),
-		languageOptions = document.querySelector('.language__variants'),
-		languageVariants = languageOptions.querySelectorAll('ul li'),
-		headerTitle = document.querySelector('header h1'),
-		tip = document.getElementById('tip'),
-		layer = document.querySelector('.layer')
+		startTimerBtn = document.getElementById('timerBtn') 
 
 	// HELPER FUNCTIONS
 	const addingZero = (number) => (number < 10 ? '0' + number : number)
-	const setTextsToElems = (messageObject, statusCode, lang, additionalObj = {}) => {
-		if (lang === 'en') {
-			headerTitle.innerHTML = 'Time Tracker'
-			tip.innerHTML = 'Choose one of the options!'
+	const setTextsToElems = (messageObject, statusCode, additionalObj = {}) => {
 			if (statusCode === STATUS_CODE.success) {
-				years.nextElementSibling.innerHTML = messageObject.years.success.en
-				months.nextElementSibling.innerHTML = messageObject.months.success.en
-				days.nextElementSibling.innerHTML = messageObject.days.success.en
-				hours.nextElementSibling.innerHTML = messageObject.hours.success.en
-				minutes.nextElementSibling.innerHTML = messageObject.minutes.success.en
-				seconds.nextElementSibling.innerHTML = messageObject.seconds.success.en
+				years.nextElementSibling.innerHTML = messageObject.years.success
+				months.nextElementSibling.innerHTML = messageObject.months.success
+				days.nextElementSibling.innerHTML = messageObject.days.success
+				hours.nextElementSibling.innerHTML = messageObject.hours.success
+				minutes.nextElementSibling.innerHTML = messageObject.minutes.success
+				seconds.nextElementSibling.innerHTML = messageObject.seconds.success
 			} else if (statusCode === STATUS_CODE.error) {
-				years.nextElementSibling.innerHTML = messageObject.years.error.en
-				months.nextElementSibling.innerHTML = messageObject.months.error.en
-				days.nextElementSibling.innerHTML = messageObject.days.error.en
-				hours.nextElementSibling.innerHTML = messageObject.hours.error.en
-				minutes.nextElementSibling.innerHTML = messageObject.minutes.error.en
-				seconds.nextElementSibling.innerHTML = messageObject.seconds.error.en
+				years.nextElementSibling.innerHTML = messageObject.years.error
+				months.nextElementSibling.innerHTML = messageObject.months.error
+				days.nextElementSibling.innerHTML = messageObject.days.error
+				hours.nextElementSibling.innerHTML = messageObject.hours.error
+				minutes.nextElementSibling.innerHTML = messageObject.minutes.error
+				seconds.nextElementSibling.innerHTML = messageObject.seconds.error
 			} else if (statusCode === STATUS_CODE.reset) {
 				years.innerHTML = messageObject.years.reset
 				months.innerHTML = messageObject.months.reset
@@ -127,39 +81,6 @@ window.addEventListener('DOMContentLoaded', () => {
 				minutes.innerHTML = additionalObj.minutes
 				seconds.innerHTML = additionalObj.seconds
 			}
-		} else if (lang === 'ru') {
-			headerTitle.innerHTML = 'Tрекер Времени'
-			tip.innerHTML = 'Выберите один из вариантов!'
-			if (statusCode === STATUS_CODE.success) {
-				years.nextElementSibling.innerHTML = messageObject.years.success.ru
-				months.nextElementSibling.innerHTML = messageObject.months.success.ru
-				days.nextElementSibling.innerHTML = messageObject.days.success.ru
-				hours.nextElementSibling.innerHTML = messageObject.hours.success.ru
-				minutes.nextElementSibling.innerHTML = messageObject.minutes.success.ru
-				seconds.nextElementSibling.innerHTML = messageObject.seconds.success.ru
-			} else if (statusCode === STATUS_CODE.error) {
-				years.nextElementSibling.innerHTML = messageObject.years.error.ru
-				months.nextElementSibling.innerHTML = messageObject.months.error.ru
-				days.nextElementSibling.innerHTML = messageObject.days.error.ru
-				hours.nextElementSibling.innerHTML = messageObject.hours.error.ru
-				minutes.nextElementSibling.innerHTML = messageObject.minutes.error.ru
-				seconds.nextElementSibling.innerHTML = messageObject.seconds.error.ru
-			} else if (statusCode === STATUS_CODE.reset) {
-				years.innerHTML = messageObject.years.reset
-				months.innerHTML = messageObject.months.reset
-				days.innerHTML = messageObject.days.reset
-				hours.innerHTML = messageObject.hours.reset
-				minutes.innerHTML = messageObject.minutes.reset
-				seconds.innerHTML = messageObject.seconds.reset
-			} else {
-				years.innerHTML = additionalObj.years
-				months.innerHTML = additionalObj.months
-				days.innerHTML = additionalObj.days
-				hours.innerHTML = additionalObj.hours
-				minutes.innerHTML = additionalObj.minutes
-				seconds.innerHTML = additionalObj.seconds
-			}
-		}
 	}
 
 	const getTimerInterval = (endingTime) => {
@@ -180,9 +101,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 		// Total - is a difference between ending time and current time
 	}
-	const setTimerState = (messageObject, visible, statusCode, lang) => {
-		TIMER_STATUS = statusCode
-		setTextsToElems(messageObject, statusCode, lang)
+	const setTimerState = (messageObject, visible, statusCode) => {
+		setTextsToElems(messageObject, statusCode)
 		timer.classList.remove('timer_hidden')
 		if (visible) {
 			timer.classList.remove('timer_disable')
@@ -261,11 +181,11 @@ window.addEventListener('DOMContentLoaded', () => {
 	function updateTimer(inputValue) {
 		const info = getTimerInterval(inputValue)
 		if (info) {
-			setTextsToElems(null, null, lang, info)
+			setTextsToElems(null, null, info)
 			if (info.total <= 0) {
 				timerF.stop()
 				timer.classList.add('timer_disable')
-				setTextsToElems(MESSAGES, STATUS_CODE.reset, lang)
+				setTextsToElems(MESSAGES, STATUS_CODE.reset)
 			}
 		}
 	}
@@ -274,17 +194,16 @@ window.addEventListener('DOMContentLoaded', () => {
 		timerF.stop()
 		if (inputValue) {
 			timerF.start(inputValue)
-			setTimerState(MESSAGES, true, STATUS_CODE.success, lang)
+			setTimerState(MESSAGES, true, STATUS_CODE.success)
 		} else {
-			setTimerState(MESSAGES, false, STATUS_CODE.error, lang)
+			setTimerState(MESSAGES, false, STATUS_CODE.error)
 		}
 	}
-	form.addEventListener('submit', (e) => {
-		e.preventDefault()
+	startTimerBtn.addEventListener('click', () => {
 		checkInputsValue(inputDate.value, inputTime.value)
 		if (!inputDate.value && !inputTime.value) {
 			timerF.stop()
-			setTextsToElems(MESSAGES, STATUS_CODE.reset, lang)
+			setTextsToElems(MESSAGES, STATUS_CODE.reset)
 			tip.classList.add('fadeIn')
 			setTimeout(() => {
 				tip.classList.remove('fadeIn')
@@ -306,29 +225,12 @@ window.addEventListener('DOMContentLoaded', () => {
 		localStorage.removeItem('time')
 		localStorage.removeItem('date')
 		timerF.stop()
-		setTextsToElems(MESSAGES, STATUS_CODE.reset, lang)
+		setTextsToElems(MESSAGES, STATUS_CODE.reset)
 	})
 
-	// SET LANGUAGE
-	languageChanger.addEventListener('click', (e) => {
-		languageOptions.classList.toggle('language__variants_visible')
-	})
-	languageVariants.forEach((option) => {
-		option.addEventListener('click', () => {
-			lang = option.getAttribute('data-lang')
-			localStorage.setItem('lang', lang)
-			languageOptions.classList.toggle('language__variants_visible')
-			setTextsToElems(MESSAGES, TIMER_STATUS, lang)
-		})
-	})
-	layer.addEventListener('click', () => {
-		languageOptions.classList.remove('language__variants_visible')
-	})
 	window.addEventListener('load', () => {
 		inputDate.value = localStorage.getItem('date')
 		inputTime.value = localStorage.getItem('time')
-		lang = localStorage.getItem('lang')
-		setTextsToElems(MESSAGES, STATUS_CODE.reset, lang)
 		checkInputsValue(inputDate.value, inputTime.value)
 	})
 })
