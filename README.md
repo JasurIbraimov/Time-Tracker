@@ -1,6 +1,6 @@
 # Time-Tracker
 ## About App
-This is a Time-Tracker App! You can set the timer for any time you want! 
+This is a Time-Tracker App! ⏱ You can set the timer for any time you want! 
 You have several options: 
 1. Just choose a date!
 2. Choose a date and time!
@@ -14,4 +14,5 @@ Stack is very simple!
 - Css
 - Additional, I use a boxicon icon set! https://boxicons.com/
 
-Thanks! I hope you'll enjoy this app and it'll be usefull!
+Thanks! I hope you'll enjoy this app and it'll be usefull! 🤩
+https://jasuribraimov.github.io/Time-Tracker/  😉
